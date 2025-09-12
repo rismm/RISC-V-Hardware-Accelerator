@@ -1,0 +1,13 @@
+.venv
+*.log
+*.json
+*.ys
+
+# Vivado Project folders
+HardwareAccelerator.cache/
+HardwareAccelerator.hw/
+HardwareAccelerator.sim/
+HardwareAccelerator.runs/
+HardwareAccelerator.ip_user_files/
+
+HardwareAccelerator.xpr
