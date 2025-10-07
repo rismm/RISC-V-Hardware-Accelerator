@@ -50,7 +50,7 @@ FUNCTION:
 
 DMEM:
 
-MMIO_BASE: .word 0xFFFF0080
+MMIO_BASE: .word 0x00007f00
 LOOP_ITER: .word 3
 
 #------- <Data Memory ends>	

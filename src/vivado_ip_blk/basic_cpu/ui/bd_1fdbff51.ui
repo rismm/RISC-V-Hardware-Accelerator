@@ -1,0 +1,21 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"1.25",
+   "Default View_TopLeft":"-362,-136",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.5.8 2022-09-21 7111 VDI=41 GEI=38 GUI=JA:10.0
+#  -string -flagsOSRD
+preplace port port-id_clk -pg 1 -lvl 0 -x 0 -y 70 -defaultsOSRD
+preplace port port-id_rstn -pg 1 -lvl 0 -x 0 -y 100 -defaultsOSRD
+preplace portBus debug_reg -pg 1 -lvl 3 -x 560 -y 70 -defaultsOSRD
+preplace inst picorv32_cpu_0 -pg 1 -lvl 1 -x 150 -y 140 -defaultsOSRD
+preplace inst axi_ram_0 -pg 1 -lvl 2 -x 410 -y 70 -defaultsOSRD
+preplace netloc rstn_1 1 0 1 NJ 100
+preplace netloc clk_1 1 0 2 20 280 280J
+preplace netloc axi_ram_0_debug_reg 1 2 1 N 70
+preplace netloc picorv32_cpu_0_M_AXI 1 1 1 N 60
+levelinfo -pg 1 0 150 410 560
+pagesize -pg 1 -db -bbox -sgen -80 0 730 290
+"
+}
+0

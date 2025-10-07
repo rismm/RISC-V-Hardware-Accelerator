@@ -4,23 +4,23 @@
  */
 
 module tb_wrapper_basic #(
-    parameter reset_pc = 32'h0040_0000
+        parameter reset_pc = 32'h0000_0000
     )
     (
     );
     
     reg clk = 0;
     reg rst = 0;
-//    reg [15:0] dip;
+
     wire [31:0] MMIO_mem;
     reg [31:0] exp_out [0:7];
     
     reg [31:0] prev_mem;
     
-//    assign exp_out[0] = 32'h0000_007A;
     
-    wrapper dut (.clk(clk), .rst(rst), .mmio_o(MMIO_mem));
-
+//    wrapper dut (.clk(clk), .rst(rst), .mmio_o(MMIO_mem));
+    design_2 dut (.clk(clk), .rstn(rst), .debug_reg(MMIO_mem));
+    
     integer test_count = 0;
 	integer pass_count = 0;
 	integer fail_count = 0;
@@ -47,19 +47,9 @@ module tb_wrapper_basic #(
 	
 	initial begin
 	    $readmemh("exp_out.mem", exp_out);
-	    rst = 1; #100; rst = 0;
+//	    rst = 1; #100; rst = 0;
+	    rst = 0; #100; rst = 1;
 	   
-//	    #500;
-//	    test_count = test_count + 1;
-//	    if (MMIO_mem == 32'h0000_007A) begin
-//	        pass_count <= pass_count + 1;
-//            $display("[%0t] PASS: Test #%0d", $time, test_count);
-//        end
-//        else begin
-//            fail_count <= fail_count + 1;
-//            $display("[%0t] FAIL: Test #%0d, Expected MMIO_mem=0x%08X, Got=0x%08X", 
-//                $time, test_count, 32'h0000_007A, MMIO_mem);
-//        end
         
         #5000;
         $display("\n[%0t] === FINAL TEST SUMMARY ===", $time);
