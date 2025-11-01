@@ -18,8 +18,8 @@ module tb_wrapper_basic #(
     reg [31:0] prev_mem;
     
     
-//    wrapper dut (.clk(clk), .rst(rst), .mmio_o(MMIO_mem));
-    design_2 dut (.clk(clk), .rstn(rst), .debug_reg(MMIO_mem));
+    // wrapper dut (.clk(clk), .rst(rst), .mmio_o(MMIO_mem));
+    design_2_copy dut (.clk(clk), .rstn(rst), .debug_reg(MMIO_mem));
     
     integer test_count = 0;
 	integer pass_count = 0;
@@ -46,7 +46,7 @@ module tb_wrapper_basic #(
 	end
 	
 	initial begin
-	    $readmemh("exp_out.mem", exp_out);
+	    $readmemh("exp_out_basic_tb.mem", exp_out);
 //	    rst = 1; #100; rst = 0;
 	    rst = 0; #100; rst = 1;
 	   

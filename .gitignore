@@ -9,5 +9,7 @@ HardwareAccelerator.hw/
 HardwareAccelerator.sim/
 HardwareAccelerator.runs/
 HardwareAccelerator.ip_user_files/
+HardwareAccelerator.gen/
+HardwareAccelerator.srcs/
 
 HardwareAccelerator.xpr

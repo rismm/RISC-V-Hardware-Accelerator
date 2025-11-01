@@ -102,8 +102,8 @@ module axi_ram
 
     integer i;
     initial begin
-        $readmemh("basic_tb_irom_compact.mem", IROM);
-        $readmemh("basic_tb_dmem_compact.mem", DMEM);
+        $readmemh("matmul_test_irom.mem", IROM);
+        $readmemh("matmul_test_dmem.mem", DMEM);
         axi_rvalid = 0;
         axi_bvalid = 0;
         
