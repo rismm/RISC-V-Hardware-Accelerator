@@ -102,6 +102,11 @@ module axi_ram
 
     integer i;
     initial begin
+        $display("-------------------------------------------------------------------------------------");
+        $display("AXI_RAM: Sanity Print (0x0002) [Change the hex to confirm regeneration of axi_ram IP]");
+        $display("-------------------------------------------------------------------------------------");
+    
+    
         $readmemh("matmul_test_irom.mem", IROM);
         $readmemh("matmul_test_dmem.mem", DMEM);
         axi_rvalid = 0;
@@ -135,12 +140,18 @@ module axi_ram
                 if (S_AXI_WSTRB[1]) DMEM[S_AXI_AWADDR[DMEM_DEPTH-1:2]][15:8] <= S_AXI_WDATA[15:8];
                 if (S_AXI_WSTRB[2]) DMEM[S_AXI_AWADDR[DMEM_DEPTH-1:2]][23:16] <= S_AXI_WDATA[23:16];
                 if (S_AXI_WSTRB[3]) DMEM[S_AXI_AWADDR[DMEM_DEPTH-1:2]][31:24] <= S_AXI_WDATA[31:24];
+                
+                $display("[%0t] DMEM WRITE: addr=0x%08h (index=%0d) data=0x%08h wstrb=%4b",
+                          $time, S_AXI_AWADDR, S_AXI_AWADDR[DMEM_DEPTH-1:2], S_AXI_WDATA, S_AXI_WSTRB);
             end
             2'b10: begin
                 if (S_AXI_WSTRB[0]) MMIO_interface[S_AXI_AWADDR[4:2]][7:0] <= S_AXI_WDATA[7:0];
                 if (S_AXI_WSTRB[1]) MMIO_interface[S_AXI_AWADDR[4:2]][15:8] <= S_AXI_WDATA[15:8];
                 if (S_AXI_WSTRB[2]) MMIO_interface[S_AXI_AWADDR[4:2]][23:16] <= S_AXI_WDATA[23:16];
                 if (S_AXI_WSTRB[3]) MMIO_interface[S_AXI_AWADDR[4:2]][31:24] <= S_AXI_WDATA[31:24];
+                
+                $display("[%0t] MMIO WRITE: addr=0x%08h (index=%0d) data=0x%08h wstrb=%4b",
+                          $time, S_AXI_AWADDR, S_AXI_AWADDR[4:2], S_AXI_WDATA, S_AXI_WSTRB);
             end
             2'b11: dump <= S_AXI_WDATA;
             endcase
